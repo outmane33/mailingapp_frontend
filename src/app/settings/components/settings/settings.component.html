@@ -1,0 +1,20 @@
+<div
+  class="page-inner"
+  (contextmenu)="showContextMenu($event)"
+  class="right-click-target"
+>
+  <div>Right-click anywhere in this box to open the context menu.</div>
+
+  <div
+    class="dropdown-menu"
+    [ngStyle]="{
+      display: displayStyle,
+      top: positionY + 'px',
+      left: positionX + 'px'
+    }"
+  >
+    <a class="dropdown-item" href="#">Action 1</a>
+    <a class="dropdown-item" href="#">Action 2</a>
+    <a class="dropdown-item" href="#">Action 3</a>
+  </div>
+</div>

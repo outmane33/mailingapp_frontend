@@ -1,0 +1,17 @@
+.testPlaceholder {
+  height: 500px;
+}
+
+select {
+  width: 150px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  display: none; /* Hidden by default */
+}
+.dropdown-menu a {
+  font-size: 16px;
+  color: gray;
+  cursor: pointer;
+}

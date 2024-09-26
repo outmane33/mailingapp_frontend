@@ -1,0 +1,12 @@
+.right-click-target {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px;
+  background-color: #f8f9fa;
+  cursor: context-menu;
+}
+
+.dropdown-menu {
+  position: absolute;
+  display: none; /* Hidden by default */
+}

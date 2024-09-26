@@ -1,0 +1,169 @@
+<div
+  class="page-inner right-click-target"
+  (contextmenu)="showContextMenu($event)"
+>
+  <!-- -----------------------First Row: select boite and offer--------------------------- -->
+  <div class="row">
+    <!-- first column  (all boites)-->
+    <div class="col">
+      <app-all-boites></app-all-boites>
+      <!--  content type -->
+      <div class="col form-group">
+        <label for="smallSelect">Content type</label>
+        <select
+          class="form-select form-control-sm text-center"
+          id="selectContentType"
+        >
+          <option>text/plain</option>
+          <option>text/html</option>
+          <option>multipart/alternative</option>
+        </select>
+      </div>
+    </div>
+    <!-- first column  (Choose Isp)-->
+    <div class="col">
+      <app-isp></app-isp>
+      <!--  content type -->
+      <div class="col form-group">
+        <label for="smallSelect">Test After</label>
+        <input
+          class="form-control form-control-sm text-center"
+          type="text"
+          placeholder="Test After"
+          aria-label=".form-control-sm example"
+          style="width: 150px"
+          [(ngModel)]="afterTest"
+        />
+      </div>
+    </div>
+    <!-- second column (after test) -->
+    <div class="col">
+      <app-after-test></app-after-test>
+      <!-- charset -->
+      <div class="col form-group">
+        <label for="smallSelect">Charset</label>
+        <select
+          class="form-select form-control-sm text-center"
+          id="smallSelect"
+        >
+          <option>utf-8</option>
+          <option>us-ascii</option>
+          <option>iso-8859-1</option>
+        </select>
+      </div>
+    </div>
+    <!-- third column (before test) -->
+    <div class="col">
+      <app-before-test (child)="selectedOptions = $event"></app-before-test>
+      <!-- Trans Enc -->
+      <div class="col form-group">
+        <label for="smallSelect">Trans Enc </label>
+        <select
+          class="form-select form-control-sm text-center"
+          id="selectTransEnc"
+        >
+          <option>7bit</option>
+          <option>8bit</option>
+          <option>base64</option>
+          <option>quoted-printable</option>
+        </select>
+      </div>
+    </div>
+    <!-- Fourth column (Affiliate Network) -->
+    <div class="col">
+      <!--Offer Info  -->
+      <app-offer-info></app-offer-info>
+      <!-- NEW ROW -->
+      <div class="row">
+        <div class="col form-group">
+          <label for="smallSelect">Link type</label>
+          <select class="form-select form-control-sm" id="smallSelect">
+            <option>Routing</option>
+            <option>encrypted</option>
+            <option>encrypted attr</option>
+            <option>encrypted attrbased</option>
+          </select>
+        </div>
+        <div class="col form-group">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Static Domain</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="Static Domain"
+            />
+          </div>
+        </div>
+      </div>
+      <!--  -->
+    </div>
+  </div>
+  <!-- -----------------------Second Row: HEADER & BODY---------------------------- ->
+  <!-- --------------------------------------------- -->
+  <div class="row">
+    <!-- HEADER -->
+    <div class="col-md-6">
+      <app-header (child)="headerText = $event"></app-header>
+    </div>
+    <!--End HEADER -->
+    <!-- BODY -->
+    <div class="col-md-6">
+      <app-body (child)="bodyText = $event"></app-body>
+    </div>
+    <!-- End BODY -->
+  </div>
+  <!-- -----------------------Third Row: Recipientes & Placeholders--------------------------- -->
+  <div class="row">
+    <!-- Recipientes -->
+    <div class="col-md-3">
+      <app-recipientes (child)="recipienteText = $event"></app-recipientes>
+    </div>
+    <!--END Recipientes  -->
+    <!-- Placeholders -->
+    <div class="col-md-9">
+      <app-placeholders></app-placeholders>
+    </div>
+    <!-- End Placeholders -->
+  </div>
+  <!-- ------------------------Fourt Row: Email List Filters & Email Lists-------------------------- -->
+  <div class="row">
+    <!-- Email List Filters  -->
+    <div class="col-md-3">
+      <app-list-filters></app-list-filters>
+    </div>
+    <!-- End Email List Filters -->
+    <!-- Email Lists -->
+    <div class="col-md-9">
+      <app-email-lists></app-email-lists>
+    </div>
+    <!--End Email Lists -->
+  </div>
+  <!--  -->
+  <div
+    class="dropdown-menu"
+    [ngStyle]="{
+      display: displayStyle,
+      top: positionY + 'px',
+      left: positionX + 'px'
+    }"
+  >
+    <a class="dropdown-item" (click)="SendDrop()">
+      <i class="fa-solid fa-paper-plane"></i> Send Drop</a
+    >
+    <a class="dropdown-item" (click)="TestAll()">
+      <i class="fa-solid fa-flask-vial"></i> Test All</a
+    >
+    <a class="dropdown-item" (click)="TestEmail()">
+      <i class="fa-solid fa-envelope-open"></i> Test Email</a
+    >
+    <a class="dropdown-item" (click)="Help()">
+      <i class="fa-solid fa-circle-info"></i> Help</a
+    >
+  </div>
+  <!-- alert -->
+
+  <!--  -->
+</div>

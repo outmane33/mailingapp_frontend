@@ -1,0 +1,81 @@
+<div class="card">
+  <div class="card-header">
+    <!-- <h4 class="card-title">Header</h4> -->
+    <div class="row">
+      <div class="col"><h4 class="card-title">Header</h4></div>
+      <div class="col text-end">
+        <!-- button add header -->
+        <button class="btn btn-outline-dark ms-1" (click)="addHeader()">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <!-- button import header -->
+        <!-- Hidden File Input -->
+        <input
+          #fileInput
+          type="file"
+          (change)="onFileSelected($event)"
+          style="display: none"
+        />
+        <!--  -->
+        <button class="btn btn-outline-dark ms-1" (click)="triggerFileInput()">
+          <i class="fa-solid fa-upload"></i>
+        </button>
+        <!-- button Random header -->
+        <button class="btn btn-outline-dark ms-1" (click)="randomHeader()">
+          <i class="fa-solid fa-shuffle"></i>
+        </button>
+        <!-- button Clear header -->
+        <button class="btn btn-outline-dark ms-1" (click)="clearHeader()">
+          <i class="fa-solid fa-power-off"></i>
+        </button>
+      </div>
+    </div>
+    <!--  -->
+  </div>
+  <div class="card-body">
+    <ul class="nav nav-pills nav-secondary" id="pills-tab" role="tablist">
+      <!-- header 1 -->
+
+      <li class="nav-item" *ngFor="let header of headers">
+        <a
+          [class]="header[3]"
+          id="{{ header[0] }}"
+          data-bs-toggle="pill"
+          href="#{{ header[1] }}"
+          role="tab"
+          aria-selected="true"
+          (click)="getTextAreaId(header[2])"
+        >
+          <i class="fa-solid fa-xmark" (click)="closeHeader(header)"></i>
+          {{ header[0] }}</a
+        >
+      </li>
+      <!-- end header 1 -->
+    </ul>
+    <div
+      class="tab-content mt-2 mb-3"
+      id="pills-tabContent"
+      *ngFor="let header of headers"
+    >
+      <!-- header textarea -->
+      <div [class]="header[4]" id="{{ header[1] }}" role="tabpanel">
+        <div data-mdb-input-init class="form-outline">
+          <textarea
+            class="form-control"
+            [id]="header[2]"
+            rows="15"
+            (keyup)="textintextarea($event)"
+            [value]="initHeader"
+          ></textarea>
+        </div>
+        <!-- end header textarea -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function clearTextArea(id) {
+    console.log(id);
+  }
+</script>

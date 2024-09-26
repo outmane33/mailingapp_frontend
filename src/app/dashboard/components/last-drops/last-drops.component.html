@@ -1,0 +1,69 @@
+<div class="card card-round">
+  <div class="card-header">
+    <div class="card-head-row card-tools-still-right">
+      <div class="card-title">Last Drops</div>
+      <div class="card-tools">
+        <div class="dropdown">
+          <button
+            class="btn btn-icon btn-clean me-0"
+            type="button"
+            id="dropdownMenuButton"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <i class="fas fa-ellipsis-h"></i>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <!-- Projects table -->
+      <table class="table align-items-center mb-0">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">User Name</th>
+            <th scope="col" class="text-end">Date & Time</th>
+            <th scope="col" class="text-end">Click</th>
+            <th scope="col" class="text-end">Open</th>
+            <th scope="col" class="text-end">Lead</th>
+            <th scope="col" class="text-end">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngIf="drops.length > 0">
+            <tr *ngFor="let drop of drops">
+              <th scope="row">
+                <button class="btn btn-icon btn-round btn-success btn-sm me-2">
+                  <i class="fa fa-check"></i>
+                </button>
+                {{ drop.campaignName }}
+              </th>
+              <td class="text-end">
+                {{ drop.createdAt | date : "MMM d, y, h:mm a" }}
+              </td>
+              <td class="text-end">click</td>
+              <td class="text-end">open</td>
+              <td class="text-end">lead</td>
+              <td class="text-end">
+                <span class="badge badge-success">{{ drop.status }}</span>
+              </td>
+            </tr>
+          </ng-container>
+          <ng-template #noDrops>
+            <tr>
+              <td colspan="6" class="text-center">No drops available</td>
+            </tr>
+          </ng-template>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="form-group">
+  <label for="exampleFormControlSelect2"
+    >Before Test ({{ selectedCount }})</label
+  >
+  <select
+    multiple
+    class="form-control"
+    id="exampleFormControlSelect2"
+    size="8"
+    (change)="selectValue($event)"
+  >
+    <option
+      *ngFor="let boite of sharedService.allSendersBoites"
+      [value]="boite.app_password"
+    >
+      {{ boite.email }}
+    </option>
+  </select>
+</div>

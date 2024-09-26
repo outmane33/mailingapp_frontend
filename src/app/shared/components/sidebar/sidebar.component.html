@@ -1,0 +1,141 @@
+<div class="sidebar bg-dark">
+  <div class="sidebar-logo">
+    <!-- Logo Header -->
+    <app-logo></app-logo>
+    <!-- End Logo Header -->
+  </div>
+  <div class="sidebar-wrapper scrollbar scrollbar-inner">
+    <div class="sidebar-content">
+      <ul class="nav nav-warning">
+        <!-------------------------Dashboard--------------------------------------- -->
+        <li class="nav-item active">
+          <a
+            data-bs-toggle="collapse"
+            routerLink="/dashboard"
+            class="collapsed"
+            aria-expanded="false"
+          >
+            <i class="fas fa-home"></i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+        <li class="nav-section">
+          <span class="sidebar-mini-icon">
+            <i class="fa fa-ellipsis-h"></i>
+          </span>
+          <h4 class="text-section">Components</h4>
+        </li>
+        <!-------------------------Revenu Report--------------------------------------- -->
+        <li class="nav-item">
+          <a data-bs-toggle="collapse" routerLink="/revenuReport">
+            <i class="fa-solid fa-dollar-sign"></i>
+            <p>Revenu Report</p>
+          </a>
+        </li>
+        <!-------------------------Production--------------------------------------- -->
+        <li class="nav-item">
+          <a data-bs-toggle="collapse" href="#sidebarLayouts">
+            <i class="fa-solid fa-paper-plane"></i>
+            <p>Production</p>
+            <span class="caret"></span>
+          </a>
+          <div class="collapse" id="sidebarLayouts">
+            <ul class="nav nav-collapse">
+              <li>
+                <a routerLink="/production">
+                  <span class="sub-item">Send Page</span>
+                </a>
+              </li>
+              <li>
+                <a routerLink="/dropMonitor">
+                  <span class="sub-item">Drop Monitor</span>
+                </a>
+              </li>
+              <li>
+                <a routerLink="/testMonitor">
+                  <span class="sub-item">Test Monitor</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <!-------------------------Run Commands--------------------------------------- -->
+
+        <li class="nav-item">
+          <a data-bs-toggle="collapse" href="#forms">
+            <i class="fa-solid fa-terminal"></i>
+            <p>Run Commands</p>
+            <span class="caret"></span>
+          </a>
+          <div class="collapse" id="forms">
+            <ul class="nav nav-collapse">
+              <li>
+                <a routerLink="/runCommands">
+                  <span class="sub-item">Track Drop</span>
+                </a>
+              </li>
+              <li>
+                <a routerLink="/suppression">
+                  <span class="sub-item">Suppression</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <!-------------------------Users--------------------------------------- -->
+
+        <li class="nav-item">
+          <a data-bs-toggle="collapse" href="#tables">
+            <i class="fa-solid fa-user-group"></i>
+            <p>Users</p>
+            <span class="caret"></span>
+          </a>
+          <div class="collapse" id="tables">
+            <ul class="nav nav-collapse">
+              <li>
+                <a href="tables/tables.html">
+                  <span class="sub-item">Manage Users</span>
+                </a>
+              </li>
+              <li>
+                <a href="tables/datatables.html">
+                  <span class="sub-item">Statistics</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <!-------------------------DATa--------------------------------------- -->
+
+        <li class="nav-item">
+          <a data-bs-toggle="collapse" href="#data">
+            <i class="fa-solid fa-database"></i>
+            <p>Data</p>
+            <span class="caret"></span>
+          </a>
+          <div class="collapse" id="data">
+            <ul class="nav nav-collapse">
+              <li>
+                <a routerLink="/manageData">
+                  <span class="sub-item">Manage Data</span>
+                </a>
+              </li>
+              <li>
+                <a href="forms/forms.html">
+                  <span class="sub-item">Statistics</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <!-------------------------Settings--------------------------------------- -->
+        <li class="nav-item">
+          <a data-bs-toggle="collapse" routerLink="/settings">
+            <i class="fa-solid fa-gear"></i>
+            <p>Settings</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

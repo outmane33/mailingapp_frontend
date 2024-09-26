@@ -1,0 +1,161 @@
+<div class="card emaillist">
+  <div class="card-body border-0">
+    <!-- Isps -->
+
+    <div class="form-group">
+      <label for="defaultSelect">Isps</label>
+      <select
+        class="form-select form-control w-100"
+        id="selectISP"
+        (change)="getIspEmailType()"
+      >
+        <option value="RR">RR</option>
+        <option value="Yahoo">Yahoo</option>
+        <option value="Gmail">Gmail</option>
+        <option value="Charter">Charter</option>
+      </select>
+    </div>
+
+    <!--  -->
+
+    <div class="card-header">
+      <div class="card-title">Email List Filters</div>
+    </div>
+
+    <div class="card-body pb-0">
+      <!-- Fresh section -->
+      <div class="d-flex">
+        <div class="avatar h4">
+          <i
+            class="fa-solid fa-spray-can-sparkles avatar-img rounded-circle"
+          ></i>
+        </div>
+        <div class="flex-1 pt-1 ms-2">
+          <h6 class="fw-bold mb-1" id="fresh-label">fresh</h6>
+        </div>
+        <div class="d-flex ms-auto align-items-center">
+          <input
+            type="checkbox"
+            class="btn-check"
+            id="btn-check-4"
+            autocomplete="off"
+            (click)="run('btn-check-4', 'fresh-label')"
+          />
+          <label class="btn" for="btn-check-4">check</label><br />
+        </div>
+      </div>
+
+      <div class="separator-dashed"></div>
+
+      <!-- Clean section -->
+      <div class="d-flex">
+        <div class="avatar h4">
+          <i class="fa-solid fa-broom"></i>
+        </div>
+        <div class="flex-1 pt-1 ms-2">
+          <h6 class="fw-bold mb-1" id="clean-label">clean</h6>
+        </div>
+        <div class="d-flex ms-auto align-items-center">
+          <input
+            type="checkbox"
+            class="btn-check"
+            id="btn-check-3"
+            autocomplete="off"
+            (click)="run('btn-check-3', 'clean-label')"
+          />
+          <label class="btn" for="btn-check-3">check</label><br />
+        </div>
+      </div>
+
+      <div class="separator-dashed"></div>
+
+      <!-- Openers section -->
+      <div class="d-flex">
+        <div class="avatar h4">
+          <i class="fa-solid fa-lock-open"></i>
+        </div>
+        <div class="flex-1 pt-1 ms-2">
+          <h6 class="fw-bold mb-1" id="openers-label">opener</h6>
+        </div>
+        <div class="d-flex ms-auto align-items-center">
+          <input
+            type="checkbox"
+            class="btn-check"
+            id="btn-check-2"
+            autocomplete="off"
+            (click)="run('btn-check-2', 'openers-label')"
+          />
+          <label class="btn" for="btn-check-2">check</label><br />
+        </div>
+      </div>
+
+      <div class="separator-dashed"></div>
+
+      <!-- Clickers section -->
+      <div class="d-flex">
+        <div class="avatar h4">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+        </div>
+        <div class="flex-1 pt-1 ms-2">
+          <h6 class="fw-bold mb-1" id="clickers-label">clicker</h6>
+        </div>
+        <div class="d-flex ms-auto align-items-center">
+          <input
+            type="checkbox"
+            class="btn-check"
+            id="btn-check-1"
+            autocomplete="off"
+            (click)="run('btn-check-1', 'clickers-label')"
+          />
+          <label class="btn" for="btn-check-1">check</label><br />
+        </div>
+      </div>
+
+      <div class="separator-dashed"></div>
+
+      <!-- Leaders section -->
+      <div class="d-flex">
+        <div class="avatar h4">
+          <i class="fa-solid fa-money-check-dollar"></i>
+        </div>
+        <div class="flex-1 pt-1 ms-2">
+          <h6 class="fw-bold mb-1" id="leaders-label">leader</h6>
+        </div>
+        <div class="d-flex ms-auto align-items-center">
+          <input
+            type="checkbox"
+            class="btn-check"
+            id="btn-check-5"
+            autocomplete="off"
+            (click)="run('btn-check-5', 'leaders-label')"
+          />
+          <label class="btn" for="btn-check-5">check</label><br />
+        </div>
+      </div>
+
+      <div class="separator-dashed"></div>
+
+      <!-- Unsubscribers section -->
+      <div class="d-flex">
+        <div class="avatar h4">
+          <i class="fa-solid fa-person-through-window"></i>
+        </div>
+        <div class="flex-1 pt-1 ms-2">
+          <h6 class="fw-bold mb-1" id="unsubscribers-label">Unsubscribers</h6>
+        </div>
+        <div class="d-flex ms-auto align-items-center">
+          <input
+            type="checkbox"
+            class="btn-check"
+            id="btn-check-6"
+            autocomplete="off"
+            (click)="run('btn-check-6', 'unsubscribers-label')"
+          />
+          <label class="btn" for="btn-check-6">check</label><br />
+        </div>
+      </div>
+
+      <div class="separator-dashed"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="card testPlaceholder">
+  <div class="card-header">
+    <div class="row">
+      <div class="col">
+        <h6 class="card-title" style="white-space: nowrap">Recipientes</h6>
+      </div>
+
+      <div class="col text-end">
+        <!-- button Random Recipientes -->
+        <button class="btn btn-outline-dark ms-1" (click)="randomHeader()">
+          <i class="fa-solid fa-shuffle"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="tab-content mt-2 mb-3" id="pills-tabContent">
+      <div
+        class="tab-pane fade show active"
+        id="pills-home"
+        role="tabpanel"
+        aria-labelledby="pills-home-tab"
+      >
+        <!-- Recipientes textarea -->
+        <div data-mdb-input-init class="form-outline">
+          <textarea
+            class="form-control"
+            [id]="textareaId"
+            rows="18"
+            (keyup)="textintextarea($event)"
+          ></textarea>
+        </div>
+        <!-- end Recipientes textarea -->
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="form-group">
+  <label for="exampleFormControlSelect2"
+    >All Boites ({{ selectedCount }})</label
+  >
+  <select
+    multiple
+    class="form-control"
+    id="exampleFormControlSelect2"
+    size="8"
+    (change)="onSelectChange($event)"
+  >
+    <option *ngFor="let boite of sharedService.allSendersBoites">
+      {{ boite.email }}
+    </option>
+  </select>
+</div>

@@ -1,0 +1,316 @@
+<div class="page-inner">
+  <div class="row">
+    <div class="col text-end">
+      <!-- setting drp -->
+      <button class="btn btn-outline-success ms-1">
+        <i class="fa-solid fa-gear"></i>
+      </button>
+      <!-- restart drop -->
+      <button class="btn btn-outline-info ms-1">
+        <i class="fa-solid fa-recycle"></i>
+      </button>
+      <!-- show drop -->
+      <button class="btn btn-outline-dark ms-1">
+        <i class="fa-solid fa-tv"></i>
+      </button>
+      <!-- resume drop -->
+      <button class="btn btn-outline-secondary ms-1" (click)="resumeCampaign()">
+        <i class="fa-solid fa-play"></i>
+      </button>
+      <!--  pause drop  -->
+
+      <button class="btn btn-outline-warning ms-1" (click)="pauseCampaign()">
+        <i class="fa-solid fa-pause"></i>
+      </button>
+      <!--  stop drop  -->
+      <button class="btn btn-outline-danger ms-1" (click)="stopCampaign()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+  </div>
+  <table id="example" class="table table-striped" style="width: 80%">
+    <thead>
+      <tr>
+        <th colspan="2">
+          <div class="form-floating form-floating-custom mb-3">
+            <select
+              class="form-select text-center"
+              id="selectFloatingLabel"
+              (change)="onSelectChangeLimit($event)"
+              required
+            >
+              <option [value]="5">5</option>
+              <option [value]="10">10</option>
+              <option [value]="25">25</option>
+              <option [value]="50">50</option>
+              <option [value]="100">100</option>
+              <option [value]="150">150</option>
+            </select>
+            <label for="selectFloatingLabel">Number Entries</label>
+          </div>
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Campaign Name</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Mailer</th>
+        <th>Isp</th>
+        <th>Offer</th>
+        <th>Lists</th>
+        <th>Status</th>
+        <th>Start</th>
+        <th>Total</th>
+        <th>Delivered</th>
+        <th>Bounced</th>
+        <th>Opens</th>
+        <th>Clicks</th>
+        <th>Leads</th>
+        <th>Unsubs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td>
+          <!-- id -->
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Campaign Name"
+            aria-label="default input example"
+            (keydown.enter)="onEnterPressCampaignName($event)"
+          />
+        </td>
+        <td>01/01/2001</td>
+        <td>01/01/2001</td>
+        <td>
+          <!-- mailer -->
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Mailer"
+            aria-label="default input example"
+          />
+        </td>
+        <td>
+          <!-- ISP -->
+          <select class="form-select" (change)="onSelectChangeIsp($event)">
+            <option *ngFor="let isp of ispList" [value]="isp">{{ isp }}</option>
+          </select>
+        </td>
+        <td>
+          <!-- offer -->
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Offer"
+            aria-label="default input example"
+          />
+        </td>
+        <td>
+          <!-- List -->
+          <input
+            class="form-control"
+            type="text"
+            placeholder="List"
+            aria-label="default input example"
+            (keydown.enter)="onEnterPressList($event)"
+          />
+        </td>
+        <td>
+          <!-- status -->
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            [(ngModel)]="selectedStatus"
+            (change)="onSelectChangeStatus($event)"
+          >
+            <option *ngFor="let status of statusList" [value]="status">
+              {{ status }}
+            </option>
+          </select>
+        </td>
+        <td>
+          <!-- Start -->
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Start"
+            aria-label="default input example"
+          />
+        </td>
+        <td>
+          <!-- Total -->
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Total"
+            aria-label="default input example"
+          />
+        </td>
+
+        <td>
+          <!-- Delivered -->
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Progress"
+            aria-label="default input example"
+          />
+        </td>
+        <td>
+          <!-- Bounced -->
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Bounced"
+            aria-label="default input example"
+          />
+        </td>
+        <td>
+          <!-- Opens -->
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Opens"
+            aria-label="default input example"
+          />
+        </td>
+        <td>
+          <!-- Clicks -->
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Clicks"
+            aria-label="default input example"
+          />
+        </td>
+        <td>
+          <!-- Leads -->
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Leads"
+            aria-label="default input example"
+          />
+        </td>
+        <td>
+          <!-- Unsubs -->
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Unsubs"
+            aria-label="default input example"
+          />
+        </td>
+      </tr>
+      <tr *ngFor="let drop of drops">
+        <td>
+          <input
+            type="checkbox"
+            class="btn-check"
+            id="btn-check-outlined-{{ drop._id }}"
+            autocomplete="off"
+            (change)="onCampaignSelect(drop.campaignName, $event)"
+          />
+          <label
+            class="btn btn-outline-info"
+            for="btn-check-outlined-{{ drop._id }}"
+          >
+            <i class="fa-solid fa-check"></i>
+          </label>
+        </td>
+        <td>{{ drop.campaignName }}</td>
+        <td>{{ drop.createdAt }}</td>
+        <td>01/01/2001</td>
+        <td>San Francisco</td>
+        <td>{{ drop.isp }}</td>
+        <td>101</td>
+        <td>{{ drop.dataListName }}</td>
+        <td>{{ drop.status }}</td>
+        <td>{{ drop.startFrom }}</td>
+        <td>{{ drop.total }}</td>
+        <td>{{ drop.lastStartIndex }}</td>
+        <td>0</td>
+        <td>500</td>
+        <td>100</td>
+        <td>5</td>
+        <td>30</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3">
+          Showing {{ page }} to {{ totalPages }} of {{ totalDrops }} entries
+        </td>
+        <td></td>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th colspan="3">
+          <!-- pagination -->
+          <div style="display: flex">
+            <button class="btn btn-outline-secondary" (click)="prevPage()">
+              prev
+            </button>
+            <input
+              class="form-control text-center ms-4 me-4 w-25"
+              type="text"
+              value="1"
+              aria-label="readonly input example"
+              [(ngModel)]="page"
+              (keydown.enter)="onEnterPressPage($event)"
+            />
+
+            <button class="btn btn-outline-secondary" (click)="nextPage()">
+              next
+            </button>
+          </div>
+          <!-- end pagination -->
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </tfoot>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Campaign Name</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Mailer</th>
+        <th>Isp</th>
+        <th>Offer</th>
+        <th>Lists</th>
+        <th>Status</th>
+        <th>Start</th>
+        <th>{{ total }}</th>
+        <th>{{ totalDelivered }}</th>
+        <th>Bounced</th>
+        <th>Opens</th>
+        <th>Clicks</th>
+        <th>Leads</th>
+        <th>Unsubs</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
