@@ -1,4 +1,9 @@
 export const environment = {
   production: false,
-  apiBaseUrl: 'https://pewter-young-planet.glitch.me', // Your local API URL     http://localhost:3000    https://pewter-young-planet.glitch.me
+  apiBaseUrl: 'http://localhost:3000', // Your local API URL
 };
+
+// http://localhost:3000
+// https://abyssinian-swift-kiss.glitch.me
+// https://abyssinian-swift-kiss.glitch.me
+// https://abyssinian-swift-kiss.glitch.me

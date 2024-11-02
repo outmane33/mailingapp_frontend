@@ -16,6 +16,7 @@ export class LoginService {
     // Check if we are in the browser environment
     if (this.isBrowser()) {
       this.isavailable = !!localStorage.getItem(this.authTokenKey);
+      this.user_name = localStorage.getItem('user_name')!;
     }
   }
 
@@ -55,6 +56,7 @@ export class LoginService {
     if (this.isBrowser()) {
       localStorage.removeItem(this.authTokenKey);
       localStorage.removeItem(this.userKey);
+      localStorage.removeItem('user_name')!;
     }
     this.isavailable = false;
   }
@@ -64,6 +66,7 @@ export class LoginService {
     if (this.isBrowser()) {
       localStorage.setItem(this.authTokenKey, token);
       localStorage.setItem(this.userKey, JSON.stringify(user));
+      localStorage.setItem('user_name', JSON.stringify(this.user_name));
     }
     this.isavailable = true;
   }

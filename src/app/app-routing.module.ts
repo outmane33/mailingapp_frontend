@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'dropMonitor', component: DropMonitorComponent },
   { path: 'testMonitor', component: TestMonitorComponent },
   { path: 'suppression', component: SuppressionComponent },
-  { path: 'users', component: UsersComponent },
+  { path: 'manageUsers', component: UsersComponent },
   { path: 'settings', component: SettingsComponent },
   { path: 'manageData', component: ManageDataComponent },
   { path: '**', redirectTo: 'dashboard', pathMatch: 'full' },

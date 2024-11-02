@@ -15,6 +15,8 @@ export class ProductionService {
   public duplicate = 1;
   public data: any = [];
   public dataListName = '';
+  public affiliateNetwork = '';
+  public offer = '';
 
   constructor(private http: HttpClient) {}
   private apiUrl = environment.apiBaseUrl;

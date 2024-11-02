@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { DropMonitorComponent } from './drop-monitor/components/drop-monitor/drop-monitor.component';
 import { DropMonitorModule } from './drop-monitor/drop-monitor.module';
 import { LoginModule } from './login/login.module';
+import { TestMonitorModule } from './test-monitor/test-monitor.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,6 +38,7 @@ import { LoginModule } from './login/login.module';
     FormsModule,
     DropMonitorModule,
     LoginModule,
+    TestMonitorModule,
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],

@@ -22,6 +22,16 @@ export class ManageDataComponent {
   selectInitialEmailsType = 'selectInitialEmailsType';
   disableInput = false;
   allDataNames: any[] = [];
+  allData: any = {};
+  arr = [1, 2, 3];
+  // -------------------------------
+  public result: any = 0;
+  public page: number = 1;
+  public mypage: number = 1;
+  public limit: number = 5;
+  public totalPages: number = 1;
+  public totalData: number = 0;
+  public filters: any = {}; // To store the filters like status, isp, campaignName, lists, etc.
   // Use ViewChild to get a reference to the file input
 
   constructor(
@@ -30,6 +40,7 @@ export class ManageDataComponent {
     private sharedService: SharedService
   ) {
     this.getAllDataNames();
+    this.getAllData();
   }
 
   onFileSelected(event: Event): void {
@@ -139,5 +150,88 @@ export class ManageDataComponent {
         console.log(err);
       }
     );
+  }
+  // Get all data info
+  getAllData(params?: {
+    page?: number;
+    limit?: number;
+    Total_Count?: number;
+    data_provider?: string;
+    Name?: string;
+    Updated_At?: string;
+  }) {
+    const page = params?.page || this.page;
+    const limit = params?.limit || this.limit;
+    // Merge filters with the passed params
+    const queryParams = { ...this.filters, page, limit, ...params };
+    this.httpService.getAllData(queryParams).subscribe(
+      (res: any) => {
+        this.allData = res.data;
+        this.totalPages = res.pagination.totalPages;
+        this.totalData = res.pagination.totalItems;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+  getKeys(obj: any) {
+    return Object.keys(obj);
+  }
+  // Navigate to the next page
+  nextPage() {
+    if (this.page < this.totalPages) {
+      this.page += 1;
+      this.getAllData({ page: this.page, limit: this.limit });
+    }
+  }
+  // Navigate to the previous page
+  prevPage() {
+    if (this.page > 1) {
+      this.page -= 1;
+      this.getAllData({ page: this.page, limit: this.limit });
+    }
+  }
+  // Handle enter press and validate page number
+  onEnterPressPage(e: any): void {
+    const pageNumber = Number(e.target.value);
+    if (!isNaN(pageNumber) && pageNumber > 0 && pageNumber <= this.totalPages) {
+      this.page = pageNumber;
+      this.getAllData({ page: this.page, limit: this.limit });
+    } else {
+      this.sharedService.alert('error', 'Invalid page number');
+    }
+  }
+  // Handles select change for limit
+  onSelectChangeLimit(event: any): void {
+    const limit = event.target.value;
+    this.limit = Number(limit);
+    this.getAllData({ page: this.page, limit: this.limit });
+  }
+
+  // Handle Data Provider name search and filter data
+  onEnterPressDataProvider(e: any): void {
+    const data_provider = e.target.value;
+    this.filters.data_provider =
+      data_provider.trim() !== '' ? data_provider : '';
+    this.getAllData({ page: this.page, limit: this.limit });
+  }
+  // Handle Data Provider name search and filter data
+  onEnterPressName(e: any): void {
+    const Name = e.target.value;
+    this.filters.Name = Name.trim() !== '' ? Name : '';
+    this.getAllData({ page: this.page, limit: this.limit });
+  }
+  // Handle Data Provider name search and filter data
+  onEnterPressTotalCount(e: any): void {
+    const Total_Count = e.target.value;
+    this.filters.Total_Count = Total_Count.trim() !== '' ? Total_Count : '';
+    this.getAllData({ page: this.page, limit: this.limit });
+  }
+  // Handle Data Provider name search and filter data
+  onEnterPressUpdateAt(e: any): void {
+    const Updated_At = e.target.value;
+    this.filters.Updated_At = Updated_At.trim() !== '' ? Updated_At : '';
+    this.getAllData({ page: this.page, limit: this.limit });
   }
 }

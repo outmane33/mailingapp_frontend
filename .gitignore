@@ -49,3 +49,4 @@ yarn.lock
 # Ignore generated files for Windows, Linux, and Mac
 Thumbs.db
 *.DS_Store
+.vercel

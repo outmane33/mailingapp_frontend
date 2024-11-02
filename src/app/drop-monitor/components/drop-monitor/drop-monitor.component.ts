@@ -34,7 +34,16 @@ export class DropMonitorComponent {
   getAllDrops(params?: {
     page?: number;
     limit?: number;
+    startFrom?: number;
+    opens?: number;
+    clicks?: number;
+    leads?: number;
+    unsubs?: number;
+    total?: number;
+    lastStartIndex?: number;
     campaignName?: string;
+    mailer?: string;
+    offer?: string;
     status?: string;
     isp?: string;
     dataListName?: string;
@@ -54,7 +63,7 @@ export class DropMonitorComponent {
         this.result = res.result;
         this.totalPages = res.totalPages;
         this.totalDrops = res.totalDrops;
-
+        console.log(this.drops);
         // Calculate totals
         this.totalDelivered = this.drops.reduce(
           (sum, e) => sum + e.lastStartIndex,
@@ -213,6 +222,60 @@ export class DropMonitorComponent {
   onSelectChangeStatus(e: any) {
     const status = e.target.value;
     this.filters.status = status.trim() !== '' ? status : '';
+    this.getAllDrops({ page: this.page, limit: this.limit });
+  }
+
+  // Handle mailer name search and filter drops
+  onEnterPressMailer(e: any): void {
+    const mailer = e.target.value;
+    this.filters.mailer = mailer.trim() !== '' ? mailer : '';
+    this.getAllDrops({ page: this.page, limit: this.limit });
+  }
+  // Handle mailer name search and filter drops
+  onEnterPressOffer(e: any): void {
+    const offer = e.target.value;
+    this.filters.offer = offer.trim() !== '' ? offer : '';
+    this.getAllDrops({ page: this.page, limit: this.limit });
+  }
+  // Handle start name search and filter drops
+  onEnterPressStart(e: any): void {
+    const startFrom = e.target.value;
+    this.filters.startFrom = startFrom.trim() !== '' ? startFrom : '';
+    this.getAllDrops({ page: this.page, limit: this.limit });
+  }
+  // Handle total name search and filter drops
+  onEnterPressTotal(e: any): void {
+    const total = e.target.value;
+    this.filters.total = total.trim() !== '' ? total : '';
+    this.getAllDrops({ page: this.page, limit: this.limit });
+  }
+  onEnterPressProgress(e: any): void {
+    const lastStartIndex = e.target.value;
+    this.filters.total = lastStartIndex.trim() !== '' ? lastStartIndex : '';
+    this.getAllDrops({ page: this.page, limit: this.limit });
+  }
+  // Handle opens name search and filter tests
+  onEnterPressOpens(e: any): void {
+    const opens = e.target.value;
+    this.filters.opens = opens.trim() !== '' ? opens : '';
+    this.getAllDrops({ page: this.page, limit: this.limit });
+  }
+  // Handle clicks name search and filter tests
+  onEnterPressClicks(e: any): void {
+    const clicks = e.target.value;
+    this.filters.clicks = clicks.trim() !== '' ? clicks : '';
+    this.getAllDrops({ page: this.page, limit: this.limit });
+  }
+  // Handle Leads name search and filter tests
+  onEnterPressLeads(e: any): void {
+    const leads = e.target.value;
+    this.filters.leads = leads.trim() !== '' ? leads : '';
+    this.getAllDrops({ page: this.page, limit: this.limit });
+  }
+  // Handle Leads name search and filter tests
+  onEnterPressUnsubs(e: any): void {
+    const unsubs = e.target.value;
+    this.filters.unsubs = unsubs.trim() !== '' ? unsubs : '';
     this.getAllDrops({ page: this.page, limit: this.limit });
   }
 }

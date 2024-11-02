@@ -27,6 +27,7 @@ export class ProductionComponent implements OnInit {
   positionX = 0;
   positionY = 0;
   displayStyle = 'none';
+  public staticDomain = '';
   public headerText = `  From : 
   Subject : 
   Cc : 
@@ -58,6 +59,7 @@ export class ProductionComponent implements OnInit {
   enteredText: string = ''; // Declare a variable to store the entered text
   public isCompainExists = false;
   public afterTest = 1000;
+
   constructor(
     private service: ProductionService,
     private sharedService: SharedService,
@@ -87,7 +89,7 @@ export class ProductionComponent implements OnInit {
   }
 
   TestAll() {
-    console.log(this.loginService.user_name);
+    console.log(this.staticDomain);
   }
 
   //Send Drop Email
@@ -134,11 +136,20 @@ export class ProductionComponent implements OnInit {
 
     // Set content type (text or HTML)
     if (myContentType.value === 'text/plain') {
-      data.text = this.bodyText;
+      data.text = this.bodyText.replace(
+        /\[static_domain\]/g,
+        this.staticDomain
+      );
     } else if (myContentType.value === 'text/html') {
-      data.html = this.bodyText;
+      data.html = this.bodyText.replace(
+        /\[static_domain\]/g,
+        this.staticDomain
+      );
     } else {
-      data.html = this.bodyText;
+      data.html = this.bodyText.replace(
+        /\[static_domain\]/g,
+        this.staticDomain
+      );
       data.text = 'Hello World'; // Fallback to plain text
     }
 
@@ -148,10 +159,18 @@ export class ProductionComponent implements OnInit {
     // Add recipient email for test mode
     if (isTest) {
       data.recipientes = this.recipienteText;
-      data.campaignName = `${this.loginService.user_name}`;
+      data.campaignName = `${this.sharedService.generateRandomString(15)}`;
+      data.mailer = this.loginService.user_name;
+      data.offer = this.service.offer;
+      data.affiliate_network = this.service.affiliateNetwork;
+      data.isp = this.service.listFilter.isp;
     }
 
     // Process headers (assuming headerText is formatted as "key: value")
+    this.headerText = this.headerText.replace(
+      /\[static_domain\]/g,
+      this.staticDomain
+    );
     let lines = this.headerText.split('\n');
     lines.forEach((e) => {
       let line = e.trim().split(/:(.*)/s);
@@ -209,6 +228,8 @@ export class ProductionComponent implements OnInit {
       data.campaignName = this.enteredText;
       data.testEmail = this.recipienteText.join('');
       data.afterTest = this.afterTest * 1;
+      data.mailer = this.loginService.user_name;
+      data.offer = 'offer1';
       if (!this.service.listFilter.hasOwnProperty('email_type')) {
         this.sharedService.alert('error', 'Select data type');
         return;
@@ -240,23 +261,38 @@ export class ProductionComponent implements OnInit {
       icon: 'info',
       html: `
       <div class="row " >
-      <div class="col " >random("text") or random("t"):</div>
+      <div class="col " >random("text",10) or random("t"):</div>
       <div class="col" >to get random text lowercase</div>
       </div>
 
       <div class="row" >
-      <div class="col" >random("TEXT") or random("T"):</div>
+      <div class="col" >random("TEXT",15) or random("T"):</div>
       <div class="col" >to get random text uppercase</div>
       </div>
 
       <div class="row" >
-      <div class="col" >random("number") or random("n"):</div>
+      <div class="col" >random("number",20) or random("n"):</div>
       <div class="col" >to get random number</div>
       </div>
 
-            <div class="row" >
+      <div class="row" >
       <div class="col" >[p_1] :</div>
       <div class="col" >for fisrt placeholder</div>
+      </div>
+
+      <div class="row" >
+      <div class="col" >[static_domain] :</div>
+      <div class="col" >for static domain input</div>
+      </div>
+
+      <div class="row" >
+      <div class="col" >[open] :</div>
+      <div class="col" >for traking open</div>
+      </div>
+
+      <div class="row" >
+      <div class="col" >[url] :</div>
+      <div class="col" >for traking click</div>
       </div>
       `,
       showCloseButton: true,

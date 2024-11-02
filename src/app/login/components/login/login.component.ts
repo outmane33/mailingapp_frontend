@@ -44,8 +44,10 @@ export class LoginComponent {
           localStorage.setItem('authToken', res.token);
 
           // Optionally store additional user info
-          localStorage.setItem('user', JSON.stringify(res.user));
+          localStorage.setItem('user', JSON.stringify(res.user_name));
 
+          //set user_name
+          localStorage.setItem('user_name', JSON.stringify(res.user_name));
           this.sharedService.alert('success', 'Login successful');
         } else {
           this.sharedService.alert('error', 'Login failed');

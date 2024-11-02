@@ -94,7 +94,7 @@
             </div>
             <span class="profile-username">
               <span class="op-7">Hi,</span>
-              <span class="fw-bold">Outmaene</span>
+              <span class="fw-bold">{{ loginservice.user_name }}</span>
             </span>
           </a>
           <ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -109,7 +109,7 @@
                     />
                   </div>
                   <div class="u-text">
-                    <h4>Outmane</h4>
+                    <h4>{{ loginservice.user_name }}</h4>
                     <p class="text-muted">helloAexample.com</p>
                     <a
                       href="profile.html"
@@ -127,7 +127,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Account Setting</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Logout</a>
+                <a class="dropdown-item" href="#" (click)="logOut()">Logout</a>
               </li>
             </div>
           </ul>

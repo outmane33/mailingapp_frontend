@@ -17,7 +17,6 @@ export class LastDropsComponent {
     this.sharedService.getAllDrops().subscribe(
       (res: any) => {
         this.drops = res.data;
-        console.log(this.drops);
       },
       (err) => {
         console.log(err);
